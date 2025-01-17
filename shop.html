@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movie Rentals</title>
+  <link href="/styles/main.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    header {
+        background-color: #106b96;
+        color: #333;
+        text-align: center;
+        font-size: 1.5rem;
+        height: 180px;
+        margin-top: auto;
+        font-weight: 700;
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center;
+    }
+    body {
+      height: 100vh;
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    #main {
+      width: 95vw;
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      flex-direction: row;
+      align-items: flex-start;
+
+    }
+
+    nav {
+      height: 100cap;
+      max-width: 250px;
+      width: 250px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      display: inline-block;
+      flex-direction: column;
+      overflow: auto;
+    }
+    
+
+    nav strong {
+      font-size: 24px;
+      color: #333;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin: 10px 0;
+    }
+    .cart select{
+      width: 20px;
+      height:100%;
+      background-color:  #106b96;
+      border-color:  #106b96;
+      
+      
+      
+    }
+
+    .cart {
+      background-color:  #106b96;
+      color: #fff;
+      width:100px;
+      font-size: 24px;
+      font-weight: bold;
+      border-radius: 8px;
+      margin-left:auto;
+      
+      border-color: #333;
+      
+      
+    }
+    .cart a{
+      display: inline-block;
+      margin-top: 10px;
+      
+      background-color:  #106b96;
+      color: #fff;
+      
+      text-decoration: none;
+      border-radius: 5px;
+      text-align: center;
+      cursor: pointer;
+    }
+    
+    
+    
+    nav button {
+      display: inline-block;
+      margin-top: 10px;
+      background-color: #007bff;
+      color: #fff;
+      
+      
+      text-decoration: none;
+      border-radius: 5px;
+      text-align: center;
+      cursor: pointer;
+    }
+    nav a{
+      display: inline-block;
+      margin-top: 720px;
+      background-color: #007bff;
+      color: #fff;
+      width: 207px;
+      text-decoration: none;
+      border-radius: 5px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    nav a:hover, button:hover {
+      background-color: #1868bd;
+    }
+  
+    article {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .movie {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      max-height: 600px;
+    }
+
+    
+    .link{
+      text-decoration: none;
+    }
+
+    .movie h4 {
+      font-size: 18px;
+      margin: 10px;
+      color: #333;
+    }
+
+    .movie p {
+      font-size: 14px;
+      margin: 0 10px 10px;
+      color: #666;
+    }
+
+    .movie input {
+      width: 60px;
+      padding: 5px;
+      font-size: 14px;
+      margin: 0 10px 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    
+    .movie button {
+      align-self: flex-start;
+    }
+    #empty{
+      color: #333;
+      background-color: #ddd;
+      font-size: 24px;
+      font-weight: bold;
+      width:220px;
+     
+      
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #333;
+      background-color: #106b96;
+    }
+
+    .MovieLogo {
+        height: 120px;
+        margin-left: 0px;
+
+
+    }
+    .movie img{
+      height: 350px;
+      margin-left: 27px;
+    }
+    .exit{
+      margin-top: auto;
+    }
+    
+    #days-to-rent-1, #days-to-rent-2, #days-to-rent-3 ,#days-to-rent-4 ,#days-to-rent-5 {
+    caret-color: transparent;
+  }
+  </style>
+</head>
+<body>
+   
+  <header>
+    <img src="./Movielogo.png" class="MovieLogo"/>
+    <div class="cart"><a href="/basket.html"><strong  id="basket_count"><img src="./pngwing.com.png"> 0</strong></a><select id="show_basket" onclick="contents()"></select></div>
+    
+  </header>
+ 
+  <div id="main">
+    <nav>
+      <strong>Movie Rentals</strong>
+      <p>Genres:</p>
+      <ul>
+        <li>Adventure</li>
+        <li>Animation</li>
+        <li>Science fiction</li>
+        <li>Comedy</li>
+        <li>Drama</li>
+        <li>Horror</li>
+        <li>Action</li>
+      </ul>
+      
+      <button class="exit" id = empty onclick="zero_basket()">Empty Basket</button>
+      <a id="exiting" href="/login.html"><strong>Exit</strong></a>
+      
+    </nav>
+
+    <article>
+      <!-- Movie 1 -->
+      <div class="movie"><a href="/movie.html?id=1" class="link">
+        <img src="./ring.jpg" alt="Shang-Chi and the Legend of the Ten Rings" />
+        <div>
+          <h4 >Shang-Chi and the Legend of the Ten Rings (2021)</h4>
+          <p>Shang-Chi is forced to confront his past after being drawn into the Ten Rings organization.</p>
+        </a></div>
+        <div>
+          <label for="days-to-rent-1">Days to rent:</label><br />
+          <input id="days-to-rent-1" type="number" value="3" min="1" onkeydown="return false" /><br />
+          <button onclick="addToBasket(1)">Add to Basket</button>
+        </div>
+      </div>
+
+      <!-- Movie 2 -->
+      <div class="movie"><a href="/movie.html?id=2" class="link">
+        <img src="./paw.jpg" alt="PAW Patrol: The Movie"/>
+        <div>
+          <h4>PAW Patrol: The Movie (2021)</h4>
+          <p>Cute dog movie</p>     
+        </a></div>
+        <div>
+          <label for="days-to-rent-2">Days to rent:</label><br />
+          <input id="days-to-rent-2" type="number" value="3" min="1" onkeydown="return false" /><br />
+          <button onclick="addToBasket(2)">Add to Basket</button>
+        </div>
+      </div>
+
+      <!-- Movie 3 -->
+      <div class="movie"><a href="/movie.html?id=3" class="link">
+        <img src="./spooder.jpg" alt="Spider-Man 3"/>
+        <div>
+          
+          <h4>Spider-Man 3 (2007)</h4>
+          <p>A strange black entity bonds with Peter Parker and causes turmoil as he contends with new villains and revenge.</p>
+        </a></div>
+        <div>
+          <label for="days-to-rent-3">Days to rent:</label><br />
+          <input id="days-to-rent-3" type="number" value="3" min="1" onkeydown="return false"/><br />
+          <button onclick="addToBasket(3)">Add to Basket</button>
+        </div>
+      </div>
+
+      <!-- Movie 4 -->
+      <div class="movie"><a href="/movie.html?id=4" class="link">
+        <img src="./suffocation.jpg" alt="Don't Breathe" />
+        <div>
+          <h4>Don't Breathe (2016)</h4>
+          <p>A trio of thieves break into the house of a blind man who isn't as helpless as he seems.</p>
+        </a></div>
+        <div>
+          <label for="days-to-rent-4">Days to rent:</label><br />
+          <input id="days-to-rent-4" type="number" value="3" min="1" onkeydown="return false"/><br />
+          <button onclick="addToBasket(4)">Add to Basket</button>
+        </div>
+      </div>
+
+      <!-- Movie 5 -->
+      <div class="movie"><a href="/movie.html?id=5" class="link">
+        <img src="bat.jpg" alt="The Dark Knight" />
+        <div>
+          <h4>The Dark Knight (2008)</h4>
+          <p>Batman must face one of his greatest psychological and physical tests when the Joker wreaks havoc on Gotham.</p>
+        </a></div>
+        <div>
+          <label for="days-to-rent-5">Days to rent:</label><br />
+          <input id="days-to-rent-5" type="number" value="3" min="1" onkeydown="return false"/><br />
+          <button onclick="addToBasket(5)">Add to Basket</button>
+        </div>
+      </div>
+
+      <!-- Movie 6 -->
+      <div class="movie"><a href="/movie.html?id=6" class="link">
+        <img src="./mat.jpg" alt="The Matrix" />
+        <div>
+          <h4>The Matrix (1999)</h4>
+          <p>Neo discovers the shocking truth about the life he knows, which is a deception of an evil cyber-intelligence.</p>
+        </a></div>
+        <div>
+          <label for="days-to-rent-6">Days to rent:</label><br />
+          <input id="days-to-rent-6" type="number" value="3" min="1" onkeydown="return false"/><br />
+          <button onclick="addToBasket(6)">Add to Basket</button>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <footer>
+    <p>© 2024 Movie Rentals. All rights reserved.</p>
+  </footer>
+  <script src="./js/movies.js"></script>
+  <script>
+    count = 0
+    function addToBasket(movieId) {
+      // Get the movie from data and add to the basket
+      const movie = movies.find((movie) => movie.id === movieId);
+      if (!movie) return;
+      
+
+      // Get the basket from local storage, or just an empty array if it doesn't exist
+      const basket = JSON.parse(localStorage.getItem("basket") ?? "[]");
+      const existingMovie = basket.find((item) => item.id === movieId);
+      if (existingMovie) {
+    // If the movie exists, update its rentDays
+          existingMovie.rentDays = parseInt(document.getElementById("days-to-rent-" + movieId).value);
+        } 
+      else {
+    // If the movie doesn't exist, add it to the basket
+        movie.rentDays = parseInt(document.getElementById("days-to-rent-" + movieId).value);
+        basket.push(movie);
+        count++; // Increment the basket count
+      }
+
+  // Save the updated basket to localStorage
+      localStorage.setItem("basket", JSON.stringify(basket));
+
+  // Update the basket count display
+      set_basket_num(count);
+  }
+    function contents(){
+      var total = 0;
+      var basket = JSON.parse(localStorage.getItem("basket") ?? "[]");
+      var select = document.getElementById("show_basket");
+      select.innerHTML = "";
+      count = 0;
+      for (movie in basket){
+        total = total + (basket[movie].price * basket[movie].rentDays)
+        let newOption = new Option(("asdasdas",String(basket[movie].name)+": " + "£"+ (basket[movie].price * basket[movie].rentDays).toFixed(2)));
+        select.appendChild(newOption);
+        count++
+
+      }
+      total = (total *1.2).toFixed(2);
+      select.insertBefore(new Option("Total: £" +total, "dfsadsdad"),select.firstChild);
+
+    }
+    function zero_basket(){
+      count = 0;
+      localStorage.setItem('basket', '[]');
+      set_basket_num(count);
+    }
+    function set_basket_num(num){
+      var element = document.getElementById('basket_count');
+      element.innerHTML = '<img src="./pngwing.com.png">'+ num
+
+    }
+    window.onload = function() {
+      contents()
+      set_basket_num(count);
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!--
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Rentals</title>
+    <link href="/styles/main.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <strong>Movie Rentals</strong>
+    </header>
+    <div id="main">
+      <article>
+        <h1 style="text-align: centre">Payment Details</h1>
+        <div style="background-color: lightgrey; width: 70%; margin: auto; padding: 2em">
+          <form method="GET" action="/invoice.html" onsubmit="storeData()">
+            <div>
+              <span>Title:</span>
+              <input type="text" id="title" />
+              <span>First Name:</span>
+              <input type="text" id="firstName" />
+              <span>Surname:</span>
+              <input type="text" id="surname" />
+            </div>
+            <hr />
+            <div>
+              <span>Number:</span>
+              <input type="text" id="addressNumber" />
+              <span>Street:</span>
+              <input type="text" id="addressStreet" />
+              <span>Country:</span>
+              <input type="text" id="addressCountry" />
+            </div>
+            <div>
+              <span>Postcode:</span>
+              <input type="text" id="addressPostcode" />
+              <span>City:</span>
+              <input type="text" id="addressCity" />
+            </div>
+            <hr />
+            <div>
+              <span>Card Type:</span>
+              <input type="radio" name="card" value="visa" id="visa" checked />
+              <label for="visa">Visa</label>
+              <input type="radio" name="card" value="solo" id="solo" />
+              <label for="solo">Solo</label>
+              <input type="radio" name="card" value="mastercard" id="mastercard" />
+              <label for="mastercard">Mastercard</label>
+              <input type="radio" name="card" value="switch" id="switch" />
+              <label for="switch">Switch</label>
+              <span>Card Number:</span>
+              <input type="number" id="cardNumber"/>
+              <span>Expiry Date:</span>
+              <input type="text" id="expiryMonth" />
+              <input type="text" id="expiryYear"/>
+            </div>
+            <div>
+              <button type="button" onclick="window.location.href='/shop.html'">Cancel</a>
+              <button type="submit">Proceed</button>
+            </div>
+          </form>
+        </div>
+      </article>
+    </div>
+  </body>
+
+  <script>
+
+    function storeData() {
+      // Collect all form data for use in the invoice
+      const formInputs = ["title", "firstName", "surname", "addressNumber", "addressStreet", "addressPostcode", "addressCountry", "addressCity", "cardNumber", "expiryMonth", "expiryYear"];
+      const formData = {};
+      formInputs.forEach((inputId) => {
+        formData[inputId] = document.getElementById(inputId).value;
+      })
+      formData.card = document.querySelector("input[name=card]:checked").value;
+      
+      localStorage.setItem("paymentDetails", JSON.stringify(formData));
+
+      return false;
+    }
+  </script>
+</html>
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Details</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f7f9fc;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      header {
+        background-color: #106b96;
+        color: #333;
+        
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1em;
+        width: 100%;
+      }
+
+      #main {
+        width: 100%;
+        max-width: 500px;
+        padding: 2em;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        color: #007bff;
+        margin-bottom: 1.5em;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5em;
+      }
+
+      form div {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+        align-items: center;
+      }
+
+      form span {
+        font-weight: 500;
+        width: 100%;
+        text-align: left;
+      }
+
+      form input[type="text"],
+      form input[type="number"],
+      form select {
+        width: 100%;
+        padding: 0.5em;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+
+      .actions {
+        display: flex;
+        justify-content: space-between;
+        gap: 1em;
+      }
+
+      .actions button {
+        flex: 1;
+        background-color: #007bff;
+        color: #fff;
+        padding: 0.8em;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .actions button:hover {
+        background-color: #0056b3;
+      }
+
+      .actions button[type="button"] {
+        background-color: #dc3545;
+        
+      }
+
+      .actions button[type="button"]:hover {
+        background-color: #a71d2a;
+      }
+      .logo{
+       height: 120px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="./Movielogo.png" class="logo">
+    </header>
+    <div id="main">
+      <h1>Payment Details</h1>
+      <form method="GET" action="/invoice.html" onsubmit="storeData()">
+        <div>
+          <span>Title:</span>
+          <input type="text" id="title" required />
+        </div>
+        <div>
+          <span>First Name:</span>
+          <input type="text" id="firstName" required />
+        </div>
+        <div>
+          <span>Surname:</span>
+          <input type="text" id="surname" required />
+        </div>
+        <hr />
+        <div>
+          <span>Number:</span>
+          <input type="text" id="addressNumber" required />
+        </div>
+        <div>
+          <span>Street:</span>
+          <input type="text" id="addressStreet" required />
+        </div>
+        <div>
+          <span>Country:</span>
+          <input type="text" id="addressCountry" required />
+        </div>
+        <div>
+          <span>Postcode:</span>
+          <input type="text" id="addressPostcode" required />
+        </div>
+        <div>
+          <span>City:</span>
+          <input type="text" id="addressCity" required />
+        </div>
+        <hr />
+        <div>
+          <span>Card Type:</span>
+          <select id="cardType" name="card" required>
+            <option value="visa">Visa</option>
+            <option value="solo">Solo</option>
+            <option value="mastercard">Mastercard</option>
+            <option value="switch">Switch</option>
+          </select>
+        </div>
+        <div>
+          <span>Card Number:</span>
+          <input type="number" id="cardNumber" required />
+        </div>
+        <div>
+          <span>Expiry Date:</span>
+          <input type="text" id="expiryMonth" placeholder="MM" required />
+          <input type="text" id="expiryYear" placeholder="YYYY" required />
+        </div>
+        <div class="actions">
+          <button type="button" onclick="window.location.href='/basket.html'">Cancel</button>
+          <button type="submit">Proceed</button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      function storeData() {
+        const formInputs = [
+          "title",
+          "firstName",
+          "surname",
+          "addressNumber",
+          "addressStreet",
+          "addressPostcode",
+          "addressCountry",
+          "addressCity",
+          "cardNumber",
+          "expiryMonth",
+          "expiryYear"
+        ];
+        const formData = {};
+
+        formInputs.forEach((inputId) => {
+          formData[inputId] = document.getElementById(inputId).value;
+        });
+        formData.card = document.getElementById("cardType").value;
+
+        localStorage.setItem("paymentDetails", JSON.stringify(formData));
+
+        return false;
+      }
+    </script>
+  </body>
+</html>

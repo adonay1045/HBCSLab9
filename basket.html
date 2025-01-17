@@ -1,0 +1,230 @@
+ <!--
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Rentals</title>
+    <link href="/styles/main.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <strong>Movie Rentals</strong>
+    </header>
+    <div id="main">
+      <article>
+        <h1 style="text-align: center">Basket</h1>
+        <div style="background-color: lightgrey; width: 70%; margin: auto; padding: 2em">
+          <table style="width: 100%">
+            <thead>
+              <tr>
+                <th>Movie</th>
+                <th>Time</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody id="basket"></tbody>
+          </table>
+          <hr />
+          <div style="text-align: right"><strong>Total Price:</strong> £<span id="total-price"></span></div>
+          <hr />
+          <a href="">Continue Shopping</a>
+          <button onclick="localStorage.setItem('basket', '[]');">Clear Basket</button>
+          <a href="/order.html">Go to payment details</a>
+        </div>
+      </article>
+    </div>
+  </body>
+
+  <script src="./js/movies.js"></script>
+  <script>
+    const basketContainer = document.getElementById("basket");
+
+    const basket = JSON.parse(localStorage.getItem("basket") ?? "[]");
+
+    let totalPrice = 0.0;
+
+    basket.forEach((basketItem) => {
+      basketContainer.insertAdjacentHTML(
+        "beforeend",
+        `
+            <tr>
+                <td>${basketItem.name}</td>
+                <td>${basketItem.rentDays}</td>
+                <td>${basketItem.price * basketItem.rentDays}</td>
+            </tr>
+        `
+      );
+      totalPrice += basketItem.price * basketItem.rentDays;
+    });
+
+    document.getElementById("total-price").textContent = totalPrice * 1.2;
+  </script>
+</html>
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Rentals</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f7f9fc;
+        color: #333;
+      }
+
+      header {
+        background-color: #106b96;
+        color: #333;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+
+      #main {
+        margin: 2em auto;
+        max-width: 900px;
+        padding: 1em;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        color: #007bff;
+        margin-bottom: 1em;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 1em;
+      }
+
+      table th, table td {
+        border: 1px solid #333;
+        padding: 1em;
+        text-align: center;
+      }
+
+      table th {
+        background-color: #007bff;
+        color: #333;
+      }
+
+      table tbody tr:nth-child(odd) {
+        background-color: #f1f5f9;
+      }
+
+      .total-price {
+        text-align: right;
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin: 1em 0;
+        color: #333;
+      }
+
+      .actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1em;
+      }
+
+      .actions a, .actions button {
+        background-color: #007bff;
+        color: #333;
+        text-decoration: none;
+        padding: 0.8em 1.5em;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .actions a:hover, .actions button:hover {
+        background-color: #0056b3;
+      }
+
+      .actions button {
+        outline: none;
+      }
+
+      .actions a {
+        text-align: center;
+      }
+      .logo{
+       height: 120px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="./Movielogo.png" class="logo">
+    </header>
+    <div id="main">
+      <h1>Basket</h1>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>Movie</th>
+              <th>Time (Days)</th>
+              <th>Price (£)</th>
+            </tr>
+          </thead>
+          <tbody id="basket"></tbody>
+        </table>
+        <div class="total-price">
+          <strong>Total Price:</strong> £<span id="total-price">0.00</span>
+        </div>
+        <div class="actions">
+          <a href="http://localhost:8080/shop.html">Continue Shopping</a>
+          <button onclick="localStorage.setItem('basket', '[]'); location.reload();">Clear Basket</button>
+          <a href="/order.html">Go to Payment Details</a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const basketContainer = document.getElementById("basket");
+
+      const basket = JSON.parse(localStorage.getItem("basket") ?? "[]");
+
+      let totalPrice = 0.0;
+
+      basket.forEach((basketItem) => {
+        basketContainer.insertAdjacentHTML(
+          "beforeend",
+          `
+            <tr>
+                <td>${basketItem.name}</td>
+                <td>${basketItem.rentDays}</td>
+                <td>${(basketItem.price * basketItem.rentDays).toFixed(2)}</td>
+            </tr>
+          `
+        );
+        totalPrice += basketItem.price * basketItem.rentDays;
+      });
+
+      document.getElementById("total-price").textContent = (totalPrice * 1.2).toFixed(2);
+    </script>
+  </body>
+</html>

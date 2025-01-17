@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Rentals</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      header {
+        background-color: #106b96;
+        color: #333;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+      body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        color: #333;
+      }
+
+      #main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      nav {
+        background-color: #007bff;
+        color: white;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        margin: 0 15px;
+        font-weight: bold;
+      }
+
+      nav a:hover {
+        text-decoration: underline;
+      }
+
+      article {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+      }
+
+      #movie-title {
+        font-size: 2em;
+        font-weight: bold;
+        color: #007bff;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      #movie-image {
+        display: block;
+        max-width: 100%;
+        margin: 20px auto;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      strong {
+        color: #2a4f77;
+        font-weight: bold;
+      }
+
+      p {
+        font-size: 1em;
+        margin-bottom: 10px;
+        color: #666;
+      }
+
+      footer {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 0.9em;
+        color: #999;
+      }
+     
+      .MovieLogo {
+        height: 120px;
+
+
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="./Movielogo.png" class="MovieLogo"/>
+    </header>
+    <div id="main">
+     
+      <article>
+        <h1 id="movie-title"></h1>
+        <img id="movie-image" src="" alt="Movie Image" />
+        <p><strong>Release Date:</strong> <span id="movie-release-date"></span></p>
+        <p><strong>Genres:</strong> <span id="movie-genre"></span></p>
+        <p><strong>Director:</strong> <span id="movie-director"></span></p>
+        <p><strong>Actors:</strong> <span id="movie-actors"></span></p>
+        <p><strong>Price per day:</strong> £<span id="movie-price"></span></p>
+        <p id="movie-description"></p>
+      </article>
+
+      
+    </div>
+    <script src="./js/movies.js"></script>
+    <script>
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const movieId = parseInt(urlParams.get("id"));
+      const movie = movies.find((movie) => movie.id === movieId);
+
+      document.getElementById("movie-title").textContent = movie.name;
+      document.getElementById("movie-image").src = movie.image;
+      document.getElementById("movie-genre").textContent = movie.genre;
+      document.getElementById("movie-director").textContent = movie.director;
+      document.getElementById("movie-actors").textContent = movie.actors;
+      document.getElementById("movie-description").textContent = movie.description;
+      document.getElementById("movie-release-date").textContent = movie.releaseDate;
+      document.getElementById("movie-price").textContent = movie.price.toFixed(2);
+    </script>
+     <nav>
+      <a href="/basket.html">View Basket</a>
+      <a href="/login.html">Exit</a>
+    </nav>
+    <footer>
+      <p>© 2024 Movie Rentals. All rights reserved.</p>
+    </footer>
+
+  </body>
+</html>
