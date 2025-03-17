@@ -17,11 +17,11 @@
       font-family: 'Roboto', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f4;
+      background-color: #e0f7fa; /* Light turquoise */
     }
 
     header {
-        background-color: #106b96;
+        background-color: #00796b; /* Turquoise */
         color: #fff;
         text-align: center;
         font-size: 1.5rem;
@@ -55,7 +55,7 @@
 
     nav strong {
       font-size: 22px;
-      color: #106b96;
+      color: #00796b;
       margin-bottom: 10px;
     }
 
@@ -70,10 +70,11 @@
       color: #333;
     }
 
+    /* Buttons - Fixing Exit Button */
     nav button, nav a {
       width: 100%;
       padding: 12px;
-      background-color: #106b96;
+      background-color: #00796b; /* Turquoise */
       color: white;
       border: none;
       border-radius: 8px;
@@ -118,7 +119,7 @@
     .movie h4 {
       font-size: 18px;
       margin: 10px 0;
-      color: #106b96;
+      color: #00796b;
       font-weight: bold;
     }
 
@@ -138,7 +139,7 @@
       width: 50px;
       padding: 8px;
       font-size: 16px;
-      border: 2px solid #106b96;
+      border: 2px solid #00796b;
       border-radius: 6px;
       background-color: #e0f2f1;
       outline: none;
@@ -148,7 +149,7 @@
     .movie button {
       padding: 10px;
       font-size: 16px;
-      background-color: #106b96;
+      background-color: #00796b;
       color: white;
       border: none;
       border-radius: 8px;
@@ -164,7 +165,7 @@
       padding: 15px;
       font-size: 14px;
       color: #fff;
-      background-color: #106b96;
+      background-color: #00796b;
       margin-top: 20px;
     }
 
@@ -194,16 +195,16 @@
         <li>Action</li>
       </ul>
       <button id="empty" onclick="zeroBasket()">Empty Basket</button>
-      <a id="exiting" href="/"><strong>Exit</strong></a>
+      <a id="exiting" href="/"><strong>Exit</strong></a> <!-- Fixing Exit Button -->
     </nav>
 
     <article>
       <!-- Movie List with Prices -->
-      <div class="movie" onclick="viewMovie(1)"><img src="./ring.jpg" /><h4>Shang-Chi</h4><p>Price: £2.49/day</p><div><input type="number" value="3" id="rent-1"/><button onclick="addToBasket(event,1,'Shang-Chi',2.49)">Add</button></div></div>
-      <div class="movie" onclick="viewMovie(2)"><img src="./paw.jpg" /><h4>PAW Patrol</h4><p>Price: £2.99/day</p><div><input type="number" value="3" id="rent-2"/><button onclick="addToBasket(event,2,'PAW Patrol',2.99)">Add</button></div></div>
-      <div class="movie" onclick="viewMovie(3)"><img src="./spooder.jpg" /><h4>Spider-Man 3</h4><p>Price: £0.50/day</p><div><input type="number" value="3" id="rent-3"/><button onclick="addToBasket(event,3,'Spider-Man 3',0.50)">Add</button></div></div>
-      <div class="movie" onclick="viewMovie(4)"><img src="./suffocation.jpg" /><h4>Don't Breathe</h4><p>Price: £1.29/day</p><div><input type="number" value="3" id="rent-4"/><button onclick="addToBasket(event,4,'Don't Breathe',1.29)">Add</button></div></div>
-      <div class="movie" onclick="viewMovie(5)"><img src="./bat.jpg" /><h4>The Dark Knight</h4><p>Price: £2.99/day</p><div><input type="number" value="3" id="rent-5"/><button onclick="addToBasket(event,5,'The Dark Knight',2.99)">Add</button></div></div>
+      <div class="movie" onclick="viewMovie(1)"><img src="./ring.jpg" /><h4>Shang-Chi</h4><p>Price: £1.20/day</p><div><input type="number" value="3" id="rent-1"/><button onclick="addToBasket(event,1,'Shang-Chi',1.20)">Add</button></div></div>
+      <div class="movie" onclick="viewMovie(2)"><img src="./paw.jpg" /><h4>PAW Patrol</h4><p>Price: £1.20/day</p><div><input type="number" value="3" id="rent-2"/><button onclick="addToBasket(event,2,'PAW Patrol',1.20)">Add</button></div></div>
+      <div class="movie" onclick="viewMovie(3)"><img src="./spooder.jpg" /><h4>Spider-Man 3</h4><p>Price: £1.20/day</p><div><input type="number" value="3" id="rent-3"/><button onclick="addToBasket(event,3,'Spider-Man 3',1.20)">Add</button></div></div>
+      <div class="movie" onclick="viewMovie(4)"><img src="./suffocation.jpg" /><h4>Don't Breathe</h4><p>Price: £1.20/day</p><div><input type="number" value="3" id="rent-4"/><button onclick="addToBasket(event,4,'Don't Breathe',1.20)">Add</button></div></div>
+      <div class="movie" onclick="viewMovie(5)"><img src="./bat.jpg" /><h4>The Dark Knight</h4><p>Price: £1.20/day</p><div><input type="number" value="3" id="rent-5"/><button onclick="addToBasket(event,5,'The Dark Knight',1.20)">Add</button></div></div>
     </article>
   </div>
 
