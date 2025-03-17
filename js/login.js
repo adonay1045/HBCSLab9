@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const loginForm = document.getElementById("login-form");
 
-    // Redirect logged-in users directly to shop.html
+    // Check if the user is already logged in and redirect to shop.html
     if (localStorage.getItem("loggedIn") === "true") {
         window.location.href = "shop.html";
     }
@@ -13,11 +13,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const password = document.getElementById("password").value;
 
         if (email && password) {
-            // Simulate successful login by storing a flag
+            // Store login status
             localStorage.setItem("loggedIn", "true");
 
-            // Redirect user to the shop page
-            window.location.href = "shop.html";
+            // 🚀 Force redirect to shop.html
+            window.location.replace("shop.html");
         } else {
             alert("Please enter both email and password.");
         }
