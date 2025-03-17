@@ -8,9 +8,10 @@
     <title>Login - Movie Rentals</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
+        /* General Page Styling */
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #f4f7fc;
+            background-color: #e0f7fa; /* Light turquoise */
             margin: 0;
             padding: 0;
             display: flex;
@@ -18,77 +19,77 @@
             align-items: center;
             height: 100vh;
             flex-direction: column;
-            
         }
 
+        /* Login Box */
         .login-container {
-            background: #fff;
-            margin-top: 100px;
-            top: 300px;
+            background: #ffffff;
             padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
             max-width: 400px;
-            max-height: 300px;
-            width: 100%;
-            min-height: 20vh;
-            height: 100%;
-            min-width: 20vw;
-        }
-
-        h2 {
+            width: 90%;
             text-align: center;
-            color: #333;
-            margin-bottom: 30px;
         }
 
+        /* Header Styling */
+        h2 {
+            color: #00796b; /* Deep turquoise */
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        /* Input Fields */
         .input-group {
             margin-bottom: 20px;
-            height: 100%;
+            text-align: left;
         }
 
         .input-group label {
-          height: 100%;
             font-size: 14px;
-            color: #666;
+            color: #00796b;
+            font-weight: 500;
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .input-group input {
-          height: 100%;
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             font-size: 16px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #fafafa;
+            border: 2px solid #00796b;
+            border-radius: 8px;
+            background-color: #e0f2f1; /* Light cream */
             outline: none;
             transition: all 0.3s ease;
         }
 
         .input-group input:focus {
-            border-color: #007bff;
-            background-color: #fff;
+            border-color: #004d40;
+            background-color: #ffffff;
         }
 
+        /* Buttons */
         .btn {
-          height: 100%;
             width: 100%;
             padding: 12px;
             font-size: 16px;
-            background-color: #106b96;
+            background-color: #00796b;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.2s;
+            font-weight: bold;
         }
 
         .btn:hover {
-            background-color: #0056b3;
+            background-color: #004d40;
+            transform: scale(1.05);
         }
 
+        /* Forgot Password Link */
         .forgot-password {
             display: flex;
             justify-content: flex-end;
@@ -97,66 +98,63 @@
 
         .forgot-password a {
             font-size: 14px;
-            color: #007bff;
+            color: #00796b;
             text-decoration: none;
+            font-weight: 500;
         }
 
         .forgot-password a:hover {
             text-decoration: underline;
         }
 
+        /* Footer */
         footer {
-            margin-top: 30px;
+            margin-top: 20px;
             text-align: center;
             font-size: 14px;
-            color: #777;
-            
+            color: #555;
         }
 
+        /* Mobile Responsiveness */
         @media (max-width: 480px) {
             .login-container {
                 padding: 30px;
             }
         }
-        
-        
+
+        /* Header Bar */
         .rectangle {
-        position: fixed;
-        top:0;
-        width: 100vw; /* Width of the rectangle */
-        height: 20vh; /* Height of the rectangle */
-        background-color: #106b96; /* Background color */
-        border: 2px solid #106b96; /* Optional border */
-        border-radius: 8px; /* Optional rounded corners */
-        display: flex;
-        align-items: center;
-        justify-content: center;
+            position: fixed;
+            top: 0;
+            width: 100vw;
+            height: 20vh;
+            background-color: #00796b; /* Turquoise */
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-      .MovieLogo {
-        height: 18vh;
 
+        .MovieLogo {
+            height: 18vh;
+        }
 
-      }
-      
     </style>
 </head>
 
 <body>
-    <div class="rectangle">
-        <img src="./Movielogo.png" class="MovieLogo"/>
-    </div>
-    
-    
-    
- 
-    
 
+    <!-- Header Logo -->
+    <div class="rectangle">
+        <img src="./Movielogo.png" class="MovieLogo" />
+    </div>
+
+    <!-- Login Box -->
     <div class="login-container">
         <h2>Login to Movie Rentals</h2>
-
         <form id="login-form" action="">
             <div class="input-group">
-                <label for="email" >Email</label>
+                <label for="email">Email</label>
                 <input type="email" id="email" name="email" placeholder="Enter your email" required>
             </div>
 
@@ -173,8 +171,8 @@
         <p>&copy; 2024 Movie Rentals | All rights reserved</p>
     </footer>
 
-  
-<script src="js/login.js"></script>
+    <!-- Login Handling Script -->
+    <script src="js/login.js"></script>
 
 </body>
 
