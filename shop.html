@@ -13,20 +13,15 @@
     rel="stylesheet"
   />
   <style>
-    /* General Styling */
     body {
       font-family: 'Roboto', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #e0f7fa; /* Light turquoise */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      background-color: #f4f4f4;
     }
 
-    /* Header */
     header {
-        background-color: #00796b;
+        background-color: #106b96;
         color: #fff;
         text-align: center;
         font-size: 1.5rem;
@@ -36,37 +31,31 @@
         align-items: center;
         padding: 10px 20px;
         width: 100%;
-        border-bottom: 4px solid #004d40;
     }
 
     .MovieLogo {
         height: 80px;
     }
 
-    /* Main Layout Fix */
     #main {
       display: flex;
       justify-content: space-between;
       width: 90%;
       margin-top: 20px;
-      gap: 20px;
     }
 
-    /* Sidebar Fix */
     nav {
       width: 250px;
       background-color: #ffffff;
       border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
       padding: 20px;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
     }
 
     nav strong {
       font-size: 22px;
-      color: #00796b;
+      color: #106b96;
       margin-bottom: 10px;
     }
 
@@ -84,14 +73,13 @@
     nav button, nav a {
       width: 100%;
       padding: 12px;
-      background-color: #00796b;
-      color: white; /* Ensure text is visible */
+      background-color: #106b96;
+      color: white;
       border: none;
       border-radius: 8px;
       cursor: pointer;
       font-size: 16px;
       font-weight: bold;
-      transition: background-color 0.3s ease, transform 0.2s;
       text-align: center;
       text-decoration: none;
       display: block;
@@ -99,10 +87,8 @@
 
     nav a:hover, button:hover {
       background-color: #004d40;
-      transform: scale(1.05);
     }
 
-    /* Movie Grid */
     article {
       flex: 1;
       display: grid;
@@ -111,22 +97,15 @@
       padding: 20px;
     }
 
-    /* Movie Card */
     .movie {
       background-color: #ffffff;
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
       overflow: hidden;
       padding: 15px;
-      transition: transform 0.2s ease;
       display: flex;
       flex-direction: column;
       text-align: center;
-      cursor: pointer; /* Make clickable */
-    }
-
-    .movie:hover {
-      transform: scale(1.03);
     }
 
     .movie img {
@@ -139,7 +118,7 @@
     .movie h4 {
       font-size: 18px;
       margin: 10px 0;
-      color: #00796b;
+      color: #106b96;
       font-weight: bold;
     }
 
@@ -148,7 +127,6 @@
       color: #555;
     }
 
-    /* Rent Input & Button */
     .movie div {
       display: flex;
       justify-content: space-between;
@@ -160,7 +138,7 @@
       width: 50px;
       padding: 8px;
       font-size: 16px;
-      border: 2px solid #00796b;
+      border: 2px solid #106b96;
       border-radius: 6px;
       background-color: #e0f2f1;
       outline: none;
@@ -168,30 +146,26 @@
     }
 
     .movie button {
-      width: auto;
       padding: 10px;
       font-size: 16px;
-      background-color: #00796b;
+      background-color: #106b96;
       color: white;
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
     }
 
     .movie button:hover {
       background-color: #004d40;
     }
 
-    /* Footer */
     footer {
       text-align: center;
       padding: 15px;
       font-size: 14px;
       color: #fff;
-      background-color: #00796b;
+      background-color: #106b96;
       margin-top: 20px;
-      width: 100%;
     }
 
   </style>
@@ -203,7 +177,6 @@
     <img src="./Movielogo.png" class="MovieLogo"/>
     <div class="cart">
       <a href="/basket.html"><strong id="basket_count"><img src="./pngwing.com.png"> 0</strong></a>
-      <select id="show_basket" onclick="contents()"></select>
     </div>
   </header>
 
@@ -220,14 +193,13 @@
         <li>Horror</li>
         <li>Action</li>
       </ul>
-      <button class="exit" id="empty" onclick="zero_basket()">Empty Basket</button>
+      <button id="empty" onclick="zeroBasket()">Empty Basket</button>
       <a id="exiting" href="/"><strong>Exit</strong></a>
     </nav>
 
     <article>
-      <!-- Movies List -->
-      <div class="movie" onclick="viewMovie(1)"><img src="./ring.jpg" /><h4>Shang-Chi</h4><p>Shang-Chi must confront his past...</p><div><input type="number" value="3"/><button onclick="addToBasket(event,1)">Add</button></div></div>
-      <div class="movie" onclick="viewMovie(2)"><img src="./paw.jpg" /><h4>PAW Patrol</h4><p>A fun kids movie!</p><div><input type="number" value="3"/><button onclick="addToBasket(event,2)">Add</button></div></div>
+      <div class="movie" onclick="viewMovie(1)"><img src="./ring.jpg" /><h4>Shang-Chi</h4><p>Shang-Chi must confront his past...</p><div><input type="number" value="3" id="rent-1"/><button onclick="addToBasket(event,1,'Shang-Chi',3.99)">Add</button></div></div>
+      <div class="movie" onclick="viewMovie(2)"><img src="./paw.jpg" /><h4>PAW Patrol</h4><p>A fun kids movie!</p><div><input type="number" value="3" id="rent-2"/><button onclick="addToBasket(event,2,'PAW Patrol',2.99)">Add</button></div></div>
     </article>
   </div>
 
@@ -238,18 +210,25 @@
       window.location.href = "/movie.html?id=" + id;
     }
 
-    function addToBasket(event, id) {
+    function addToBasket(event, id, name, price) {
       event.stopPropagation();
+      let rentDays = document.getElementById("rent-" + id).value;
       let basket = JSON.parse(localStorage.getItem("basket") || "[]");
-      basket.push({ id: id });
+      let movie = { id: id, name: name, rentDays: rentDays, price: price };
+      basket.push(movie);
       localStorage.setItem("basket", JSON.stringify(basket));
-      alert("Added to basket!");
+      alert(name + " added to basket!");
     }
 
-    function zero_basket() {
+    function zeroBasket() {
       localStorage.setItem("basket", "[]");
       alert("Basket emptied!");
     }
+
+    window.onload = function () {
+      let basket = JSON.parse(localStorage.getItem("basket") || "[]");
+      document.getElementById("basket_count").innerText = basket.length;
+    };
   </script>
 
 </body>
