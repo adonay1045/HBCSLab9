@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("Login successful! Redirecting...");
 
             // Redirecting to another page (modify as needed)
-            window.location.href = "movie.html"; 
+            window.location.href = "shop.html"; 
         } else {
             alert("Please enter both email and password.");
         }
