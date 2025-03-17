@@ -52,7 +52,7 @@
       gap: 20px;
     }
 
-    /* Sidebar Fix - Move It Fully to Left */
+    /* Sidebar Fix */
     nav {
       width: 250px;
       background-color: #ffffff;
@@ -85,7 +85,7 @@
       width: 100%;
       padding: 12px;
       background-color: #00796b;
-      color: white;
+      color: white; /* Ensure text is visible */
       border: none;
       border-radius: 8px;
       cursor: pointer;
@@ -102,7 +102,7 @@
       transform: scale(1.05);
     }
 
-    /* Movie Grid Fix - Make All Movies Appear */
+    /* Movie Grid */
     article {
       flex: 1;
       display: grid;
@@ -111,7 +111,7 @@
       padding: 20px;
     }
 
-    /* Movie Card Fix */
+    /* Movie Card */
     .movie {
       background-color: #ffffff;
       border-radius: 12px;
@@ -122,6 +122,7 @@
       display: flex;
       flex-direction: column;
       text-align: center;
+      cursor: pointer; /* Make clickable */
     }
 
     .movie:hover {
@@ -147,7 +148,7 @@
       color: #555;
     }
 
-    /* Ensure Input and Button Are Side by Side */
+    /* Rent Input & Button */
     .movie div {
       display: flex;
       justify-content: space-between;
@@ -155,7 +156,6 @@
       margin-top: 10px;
     }
 
-    /* Fix Rent Input Box */
     .movie input {
       width: 50px;
       padding: 8px;
@@ -167,7 +167,6 @@
       text-align: center;
     }
 
-    /* Rent Button */
     .movie button {
       width: auto;
       padding: 10px;
@@ -226,18 +225,32 @@
     </nav>
 
     <article>
-      <!-- Multiple Movies -->
-      <div class="movie"><img src="./ring.jpg" alt="Shang-Chi" /><h4>Shang-Chi (2021)</h4><p>Shang-Chi must confront his past...</p><div><label>Days:</label><input type="number" value="3" /><button>Add</button></div></div>
-      <div class="movie"><img src="./paw.jpg" alt="PAW Patrol" /><h4>PAW Patrol (2021)</h4><p>A fun kids movie!</p><div><label>Days:</label><input type="number" value="3" /><button>Add</button></div></div>
-      <div class="movie"><img src="./spooder.jpg" alt="Spider-Man 3" /><h4>Spider-Man 3 (2007)</h4><p>Peter Parker faces new challenges...</p><div><label>Days:</label><input type="number" value="3" /><button>Add</button></div></div>
-      <div class="movie"><img src="./suffocation.jpg" alt="Don't Breathe" /><h4>Don't Breathe (2016)</h4><p>A blind man isn't as helpless as he seems...</p><div><label>Days:</label><input type="number" value="3" /><button>Add</button></div></div>
-      <div class="movie"><img src="./bat.jpg" alt="The Dark Knight" /><h4>The Dark Knight (2008)</h4><p>Batman vs. The Joker.</p><div><label>Days:</label><input type="number" value="3" /><button>Add</button></div></div>
+      <!-- Movies List -->
+      <div class="movie" onclick="viewMovie(1)"><img src="./ring.jpg" /><h4>Shang-Chi</h4><p>Shang-Chi must confront his past...</p><div><input type="number" value="3"/><button onclick="addToBasket(event,1)">Add</button></div></div>
+      <div class="movie" onclick="viewMovie(2)"><img src="./paw.jpg" /><h4>PAW Patrol</h4><p>A fun kids movie!</p><div><input type="number" value="3"/><button onclick="addToBasket(event,2)">Add</button></div></div>
     </article>
   </div>
 
   <footer><p>© 2024 Movie Rentals. All rights reserved.</p></footer>
 
-  <script src="./js/movies.js"></script>
+  <script>
+    function viewMovie(id) {
+      window.location.href = "/movie.html?id=" + id;
+    }
+
+    function addToBasket(event, id) {
+      event.stopPropagation();
+      let basket = JSON.parse(localStorage.getItem("basket") || "[]");
+      basket.push({ id: id });
+      localStorage.setItem("basket", JSON.stringify(basket));
+      alert("Added to basket!");
+    }
+
+    function zero_basket() {
+      localStorage.setItem("basket", "[]");
+      alert("Basket emptied!");
+    }
+  </script>
 
 </body>
 </html>
