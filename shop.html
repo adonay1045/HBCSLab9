@@ -70,23 +70,22 @@
       color: #333;
     }
 
-    /* Buttons - Fixing Exit Button */
-    nav button, nav a {
+    /* Empty Basket Button */
+    #empty {
       width: 100%;
       padding: 12px;
-      background-color: #FF007F; /* Turquoise */
-      color: white !important;  /* Force text to stay white */
+      background-color: #00796b;
+      color: white;
       border: none;
       border-radius: 8px;
       cursor: pointer;
       font-size: 16px;
       font-weight: bold;
       text-align: center;
-      text-decoration: none;
       display: block;
     }
 
-    nav a:hover, button:hover {
+    #empty:hover {
       background-color: #004d40;
     }
 
@@ -195,7 +194,6 @@
         <li>Action</li>
       </ul>
       <button id="empty" onclick="zeroBasket()">Empty Basket</button>
-      <a id="exiting" href="/"><strong>Exit</strong></a> <!-- Fixing Exit Button -->
     </nav>
 
     <article>
