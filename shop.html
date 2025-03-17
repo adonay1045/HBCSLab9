@@ -226,16 +226,37 @@
     </nav>
 
     <article>
+      <!-- Multiple Movies -->
       <div class="movie">
-        <a href="/movie.html?id=1" class="link">
-          <img src="./ring.jpg" alt="Shang-Chi and the Legend of the Ten Rings" />
-          <h4>Shang-Chi and the Legend of the Ten Rings (2021)</h4>
-          <p>Shang-Chi is forced to confront his past after being drawn into the Twelve Rings organization.</p>
-        </a>
+        <img src="./ring.jpg" alt="Shang-Chi" />
+        <h4>Shang-Chi and the Legend of the Ten Rings (2021)</h4>
+        <p>Shang-Chi must confront his past...</p>
         <div>
-          <label for="days-to-rent-1">Days to rent:</label>
-          <input id="days-to-rent-1" type="number" value="3" min="1" onkeydown="return false" />
-          <button onclick="addToBasket(1)">Add to Basket</button>
+          <label>Days to rent:</label>
+          <input type="number" value="3" min="1" />
+          <button>Add to Basket</button>
+        </div>
+      </div>
+
+      <div class="movie">
+        <img src="./paw.jpg" alt="PAW Patrol" />
+        <h4>PAW Patrol: The Movie (2021)</h4>
+        <p>A fun kids movie!</p>
+        <div>
+          <label>Days to rent:</label>
+          <input type="number" value="3" min="1" />
+          <button>Add to Basket</button>
+        </div>
+      </div>
+
+      <div class="movie">
+        <img src="./spooder.jpg" alt="Spider-Man 3" />
+        <h4>Spider-Man 3 (2007)</h4>
+        <p>Peter Parker faces new challenges...</p>
+        <div>
+          <label>Days to rent:</label>
+          <input type="number" value="3" min="1" />
+          <button>Add to Basket</button>
         </div>
       </div>
     </article>
